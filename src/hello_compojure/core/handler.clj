@@ -8,7 +8,7 @@
            [org.bson.types ObjectId]))
 (use 'ring.util.anti-forgery)
 (use 'hiccup.core)
-
+(use 'ring.util.response)
 
 ;(let [conn (mg/connect)
 ;      db (mg/get-db conn "monger-test")]
@@ -41,13 +41,6 @@
       [:input {:type "text" :name "submitted-text" :autofocus ""}]
       anti-forgery-field
       [:input {:type "submit"}]]))
-
-(defn redirect
-    "Returns a Ring response for an HTTP 302 redirect."
-    [url]
-    {:status  302
-     :headers {"Location" url}
-     :body    ""})
 
 (defroutes app-routes
   (GET "/" [] 
